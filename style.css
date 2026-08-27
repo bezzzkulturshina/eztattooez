@@ -1793,3 +1793,10 @@ body::before {
     transition-delay: 0.30s;
   }
 }
+
+@media (max-width: 600px) {
+  .booking-preview {
+    min-height: 260px;
+    height: 260px;
+  }
+}
