@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EZ Tattoo — Olena Zadorozhna | Tattoo Artist in Turin</title>
+    <meta
+  name="description"
+  content="EZ Tattoo by Olena Zadorozhna in Moncalieri, Turin. Specializing in realism, blackwork, fine line, linework and dotwork. Book your tattoo appointment."
+/>
+<link
+      href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- ================= HEADER ================= -->
+    <header class="header" id="header">
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+<nav class="nav" id="nav">
+        <a href="#hero" data-scroll="#hero">Home</a>
+        <a href="#about" data-scroll="#about">About me</a>
+        <a href="#works" data-scroll="#works">Work</a>
+        <a href="#location" data-scroll="#location">Location</a>
+        <a href="#booking" data-scroll="#booking">Booking</a>
+        <a href="#faq" data-scroll="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="hero">
+      <!-- 
+        ФОН HERO: вставь фото ВНУТРЬ этого div.
+        Пример:
+        <div class="hero-bg ph" data-label="ФОТО ФОНА (процесс работы)">
+          ФОТО ФОНА (процесс работы)
+        </div>
+      --><div class="hero-bg ph" data-label="ФОТО ФОНА (процесс работы)">
+  <img src="photo/master3.PNG" alt="Olena Zadorozhna tattoo artist">
+</div>
+      
+      <div class="hero-inner">
+        <!-- ЛОГОТИП: вставь картинку ВНУТРЬ div -->
+        <div class="hero-logo ph" data-label="ЛОГО">
+  <img src="photo/logo.PNG" alt="Olena Zadorozhna tattoo artist">
+</div>
+        <h1>EZ Tattoo</h1>
+        <h2>Olena Zadorozhna</h2>
+        <div class="scroll-hint" data-scroll="#about">
+          <div>Scroll</div>
+          <div class="arrow">↓</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ME ================= -->
+    <section class="section reveal" id="about">
+      <div class="about-grid">
+        <div class="about-photos">
+          <!-- 
+            3 фото мастера. Вставляй ВНУТРЬ div.ph:
+            <div class="ph ph-main" data-label="ФОТО МАСТЕРА">
+              <img src="photo/master.jpg" alt="Olena Zadorozhna">
+            </div>
+          -->
+         <div class="ph ph-main" data-label="ФОТО МАСТЕРА">
+  <img src="photo/master2.PNG" alt="Olena Zadorozhna tattoo artist">
+</div>
+<div class="ph ph-s2" data-label="ФОТО 2">
+  <img src="photo/master3.PNG" alt="Realism tattoo by EZ Tattoo">
+</div>
+<div class="ph ph-s1" data-label="ФОТО 3">
+  <img src="photo/master1.jpg" alt="Blackwork tattoo by EZ Tattoo">
+</div>
+        </div>
+        <div class="about-text">
+          <h2>About me</h2>
+          <p><strong>Olena Zadorozhna — tattoo artist from Moncalieri, Turin.</strong></p>
+          <p>
+            I work in realism, blackwork, fine line, linework and dotwork. Every project starts
+            with a free consultation: we discuss the idea, size, placement and budget, then I draw
+            a custom sketch for you.
+          </p>
+          <p>
+            The studio is in Moncalieri, but clients come from all over Turin and nearby cities.
+            Follow my work on Instagram — there I post fresh tattoos, sketches and available ideas.
+          </p>
+          <div class="stats">
+            <div class="stat"><b>30K+</b><span>Instagram followers</span></div>
+            <div class="stat"><b>5</b><span>Styles</span></div>
+            <div class="stat"><b>500+</b><span>Tattoos done</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORKS / CAROUSEL ================= -->
+    <section class="section reveal" id="works">
+      <h2 class="section-title">Works<span class="gold-line"></span></h2>
+
+      <div class="carousel">
+        <div class="carousel-stage">
+          <!-- 
+            7 фото работ для карусели. Вставляй ВНУТРЬ div.slide:
+            <div class="slide ph" data-label="РАБОТА 1">
+              <img src="work/work-1.jpg" alt="Realism tattoo">
+            </div>
+          -->
+         <div class="slide ph" data-label="РАБОТА 1">
+  <img src="photo/tattoo8.jpg" alt="фото">
+</div>
+<div class="slide ph" data-label="РАБОТА 2">
+  <img src="photo/tattoo2.jpg" alt="фото">
+</div>
+<div class="slide ph" data-label="РАБОТА 3">
+  <img src="photo/tattoo3.jpg" alt="фото">
+</div>
+<div class="slide ph" data-label="РАБОТА 4">
+  <img src="photo/tattoo4.jpg" alt="фото">
+</div>
+<div class="slide ph" data-label="РАБОТА 5">
+  <img src="photo/tattoo5.jpg" alt="фото">
+</div>
+<div class="slide ph" data-label="РАБОТА 6">
+  <img src="photo/tattoo6.jpg" alt="фото">
+</div>
+<div class="slide ph" data-label="РАБОТА 7">
+  <img src="photo/tattoo7.jpg" alt="фото">
+</div>
+        </div>
+
+        <button class="carousel-btn prev" aria-label="Назад">&lsaquo;</button>
+        <button class="carousel-btn next" aria-label="Вперёд">&rsaquo;</button>
+      </div>
+
+      <button class="view-all" type="button" data-open="galleryModal">View other →</button>
+    </section>
+
+    <!-- ================= LOCATION ================= -->
+    <section id="location" class="section reveal">
+  <h2 class="section-title">Location<span class="gold-line"></span></h2>
+      <div class="location-info">
+        Moncalieri, Turin — 10024<br />
+        Via Giacomo Matteotti, 4
+      </div>
+      <!-- ГУГЛ КАРТА: если нужен другой адрес, замени src в iframe -->
+      <div class="map-box">
+        <iframe
+          title="EZ Tattoo на карте"
+          src="https://maps.google.com/maps?q=Via%20Giacomo%20Matteotti%204%2C%2010024%20Moncalieri%20TO&t=k&z=17&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+      <a
+  class="map-link"
+  href="https://www.google.com/maps/search/?api=1&query=Via+Giacomo+Matteotti+4,+10024+Moncalieri+TO"
+  target="_blank"
+  rel="noopener"
+>
+  Get directions →
+</a>
+    </section>
+    <!-- ================= BOOKING ================= -->
+    <section class="section reveal" id="booking">
+      <h2 class="section-title">Booking<span class="gold-line"></span></h2>
+      <div class="booking-grid">
+        <div>
+          <!-- ФОТО СТИЛЯ: меняется автоматически при переключении -->
+          <div class="booking-preview ph" id="stylePreview">
+  <img id="styleImage" src="photo/realism.jpg" alt="Realism tattoo">
+</div>
+          <div class="style-switch">
+            <button id="stylePrev" aria-label="Предыдущий стиль">&lsaquo;</button>
+            <span id="styleLabel">Realism</span>
+            <button id="styleNext" aria-label="Следующий стиль">&rsaquo;</button>
+          </div>
+        </div>
+
+        <form class="form-card" id="bookingForm" novalidate>
+          <h3>Book a session</h3>
+          <input name="name" type="text" placeholder="Your name" autocomplete="name" />
+          <input
+  name="contact"
+  type="text"
+  placeholder="Phone or email"
+  autocomplete="email"
+/>
+          <textarea name="wish" placeholder="What tattoo do you want? Style, size, placement, idea..."></textarea>
+          <button class="btn-gold" type="submit">Send request</button>
+        </form>
+      </div>
+    </section>
+<!-- ================= FAQ ================= -->
+
+<section class="section reveal" id="faq"> 
+  <h2 class="section-title">FAQ<span class="gold-line"></span></h2> 
+  <div class="faq-list"> 
+    <details class="faq-item"> 
+      <summary>How do I book an appointment?</summary> 
+      <p>You can book an appointment by filling out the booking form or contacting me directly on Instagram. I’ll get back to you as soon as possible.</p> 
+    </details> 
+<details class="faq-item"> 
+  <summary>How much does a tattoo cost?</summary> 
+  <p>The price depends on the size, placement, style, and complexity of the tattoo. Contact me with your idea for a personalized quote.</p> 
+</details> 
+
+<details class="faq-item"> 
+  <summary>Do you create custom designs?</summary> 
+  <p>Yes. I create custom tattoo designs based on your ideas, references, and personal preferences.</p> 
+</details> 
+
+<details class="faq-item"> 
+  <summary>What tattoo styles do you specialize in?</summary> 
+  <p>I specialize in realism, blackwork, and custom tattoo designs.</p> 
+</details> 
+
+<details class="faq-item"> 
+  <summary>Does getting a tattoo hurt?</summary> 
+  <p>Pain levels depend on the placement and your individual tolerance. I always do my best to make the experience as comfortable as possible.</p> 
+</details> 
+
+<details class="faq-item"> 
+  <summary>How should I prepare for my session?</summary> 
+  <p>Get a good night's sleep, eat a proper meal beforehand, stay hydrated, and avoid alcohol before your appointment.</p> 
+</details> 
+
+<details class="faq-item"> 
+  <summary>Is the tattoo process safe and sterile?</summary> 
+  <p>Absolutely. I use single-use sterile cartridges, medical-grade disinfectants, and proper barrier protection throughout every session.</p> 
+</details> 
+
+<details class="faq-item">
+  <summary>How long does a tattoo session take?</summary>
+  <p>
+    Session times vary depending on the size, placement, style, and complexity of the tattoo. The estimated time will be discussed before your appointment.
+  </p>
+</details>
+
+<details class="faq-item"> 
+  <summary>Where are you located?</summary> 
+  <p>You can find me at Via Giacomo Matteotti 4, Moncalieri, Turin, Italy.</p> 
+</details> 
+
+  </div> 
+</section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div><b>EZ Tattoo 2026</b><br /><br /><b>Olena Zadorozhna</b></div>
+        <div>
+          +39 345 537 9200<br />
+          <a href="https://www.instagram.com/elena_z_tattoo/" target="_blank" rel="noopener"
+            >@elena_z_tattoo</a
+          >
+        </div>
+        <div>
+  <a href="privacy.html">Privacy Policy</a> ·
+  <a href="cookies.html">Cookie Policy</a> ·
+  <a href="terms.html">Terms & Conditions</a><br /><br />
+  Moncalieri, Turin — 10024<br />
+  Via Giacomo Matteotti, 4
+</div>
+      </div>
+    </footer>
+
+    <!-- ================= МОДАЛКА: ВСЕ РАБОТЫ ================= -->
+    <div class="modal" id="galleryModal">
+      <div class="modal-card wide">
+        <h3>Other works</h3>
+        <p class="sub">
+  Explore more of my latest work.
+</p>
+        <div class="gallery-grid">
+  <div class="ph"><img src="eztattoo2/realism.jpg" alt="Tattoo work"></div>
+  <div class="ph"><img src="eztattoo2/realism2.jpg" alt="Tattoo work"></div>
+  <div class="ph"><img src="Black and grey/IMG_0714.JPG.jpg" alt="Tattoo work"></div>
+  <div class="ph"><img src="Black and grey/IMG_5586.jpg" alt="Tattoo work"></div>
+  <div class="ph"><img src="chicano/chicano.jpg" alt="Tattoo work"></div>
+  <div class="ph"><img src="eztattoo/realism5.jpg" alt="Tattoo work"></div>
+  <div class="ph"><img src="chicano/chicano3.jpg" alt="Tattoo work"></div>
+  <div class="ph"><img src="Black and grey/IMG_4379.png" alt="Tattoo work"></div>
+  <div class="ph"><img src="portrait/IMG_3850.jpg" alt="Tattoo work"></div>
+  <div class="ph"><img src="portrait2/IMG_0886.jpg" alt="Tattoo work"></div>
+  <div class="ph"><img src="Black and grey/IMG_4738.png" alt="Tattoo work"></div>
+  <div class="ph"><img src="eztattoo/realism8.jpg" alt="Tattoo work"></div>
+</div>
+        <button class="modal-close" data-close="galleryModal">Close</button>
+      </div>
+    </div>
+
+    <!-- ================= МОДАЛКА: КУДА ОТПРАВИТЬ ================= -->
+<!-- ================= MODAL: SEND REQUEST ================= -->
+    <div class="modal" id="sendModal">
+      <div class="modal-card">
+        <h3>Send request</h3>
+        <p class="sub" id="styleChoiceHint">Your request is ready. Choose where to send it:</p>
+        <div class="choice-row">
+          <button class="choice" id="sendWa"><span class="ico">✆</span>WhatsApp</button>
+          <button class="choice" id="sendIg"><span class="ico">◎</span>Instagram</button>
+        </div>
+        <div class="status" id="waStatus"></div>
+        <div class="status" id="igStatus"></div>
+        <button class="modal-close" data-close="sendModal">Close</button>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
