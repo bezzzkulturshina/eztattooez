@@ -148,7 +148,7 @@ const styles = [
   },
   {
     name: "Portrait",
-    image: "portrait/portrait.png"
+    image: "portrait/IMG_0886.png"
   },
   {
     name: "Chicano",
