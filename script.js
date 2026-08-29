@@ -164,7 +164,7 @@ const styles = [
   },
   {
     name: "Concept tattoo",
-    image: "portrait3/concept.png"
+    image: "portrait3/IMG_1502.png"
   }
 ];
 
