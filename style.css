@@ -314,7 +314,8 @@ transition: background 0.4s var(--ease);
   font-weight: 400;
   color: #ffc31f;
   line-height: 1;
-  margin: -8px 0 -8px;
+  margin: -12px 0 -4px;
+  transform: translateY(-3px);
 }
 
 .hero h2 {
