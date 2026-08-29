@@ -1807,3 +1807,47 @@ body::before {
     height: 260px;
   }
 }
+/* WORKS — View other + Instagram */
+
+.works-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+  margin-top: 60px;
+}
+
+.works-buttons .view-all {
+  margin: 0;
+}
+
+.instagram-btn {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: #ffc31f;
+  letter-spacing: 0.05em;
+  transition:
+    transform 0.3s var(--ease),
+    letter-spacing 0.4s var(--ease),
+    color 0.3s;
+}
+
+.instagram-btn:hover {
+  transform: translateY(-3px);
+  letter-spacing: 0.14em;
+  color: var(--gold-soft);
+}
+
+/* Телефон */
+@media (max-width: 600px) {
+  .works-buttons {
+    gap: 25px;
+    margin-top: 55px;
+  }
+
+  .works-buttons .view-all,
+  .instagram-btn {
+    font-size: 21px;
+  }
+}
