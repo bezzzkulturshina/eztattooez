@@ -1851,3 +1851,86 @@ body::before {
     font-size: 21px;
   }
 }
+/* =========================================
+   MOBILE BURGER MENU — FINAL
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 14px 16px;
+    display: block;
+  }
+
+  .burger {
+    position: relative;
+    z-index: 102;
+  }
+
+  .nav {
+    position: absolute;
+    top: 68px;
+    left: 16px;
+
+    width: 220px;
+    max-width: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+
+    padding: 0 20px;
+
+    background: rgba(10, 10, 10, 0.96);
+    border: 1px solid rgba(255, 195, 31, 0.25);
+    border-radius: 10px;
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-15px);
+
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease,
+      visibility 0.35s ease;
+  }
+
+  .nav.open {
+    max-width: none;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+    padding: 12px 20px;
+  }
+
+  .nav a {
+    width: 100%;
+    padding: 12px 0;
+
+    font-size: 13px;
+    text-align: left;
+
+    opacity: 0;
+    transform: translateX(-10px);
+
+    white-space: nowrap;
+  }
+
+  .nav.open a {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .nav a::after {
+    bottom: 6px;
+  }
+}
