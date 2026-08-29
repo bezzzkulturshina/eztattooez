@@ -144,7 +144,7 @@ document.querySelectorAll(".modal").forEach((m) =>
 const styles = [
   {
     name: "Realism",
-    image: "eztattoo2/realism2.jpg"
+    image: "eztattoo2/glaz.png"
   },
   {
     name: "Portrait",
