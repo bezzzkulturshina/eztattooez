@@ -1814,43 +1814,116 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 45px;
+  gap: 22px;
   margin-top: 60px;
 }
 
+/* VIEW OTHER */
+
 .works-buttons .view-all {
   margin: 0;
+  position: relative;
+  cursor: pointer;
 }
 
+/* линия под кнопкой */
+
+.works-buttons .view-all::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+
+  width: 100%;
+  height: 1px;
+
+  background: #ffc31f;
+
+  transform: scaleX(0.35);
+  transform-origin: left;
+
+  transition: transform 0.35s ease;
+}
+
+.works-buttons .view-all:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* OR */
+
+.works-or {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: rgba(255,255,255,0.5);
+}
+
+
+/* INSTAGRAM */
+
 .instagram-btn {
+  position: relative;
+
   font-family: var(--serif);
   font-size: 28px;
   font-weight: 500;
+
   color: #ffc31f;
+
   letter-spacing: 0.05em;
+
   transition:
-    transform 0.3s var(--ease),
-    letter-spacing 0.4s var(--ease),
-    color 0.3s;
+    transform 0.3s ease,
+    letter-spacing 0.35s ease;
+}
+
+.instagram-btn::after {
+  content: "";
+  position: absolute;
+
+  left: 0;
+  bottom: -5px;
+
+  width: 100%;
+  height: 1px;
+
+  background: #ffc31f;
+
+  transform: scaleX(0.35);
+  transform-origin: left;
+
+  transition: transform 0.35s ease;
 }
 
 .instagram-btn:hover {
-  transform: translateY(-3px);
-  letter-spacing: 0.14em;
-  color: var(--gold-soft);
+  transform: translateY(-2px);
+  letter-spacing: 0.1em;
 }
 
-/* Телефон */
+.instagram-btn:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* MOBILE */
+
 @media (max-width: 600px) {
+
   .works-buttons {
-    gap: 25px;
-    margin-top: 55px;
+    gap: 15px;
+    margin-top: 50px;
   }
 
   .works-buttons .view-all,
   .instagram-btn {
-    font-size: 21px;
+    font-size: 20px;
   }
+
+  .works-or {
+    font-size: 14px;
+  }
+
 }
 /* =========================================
    MOBILE BURGER MENU — FINAL
