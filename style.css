@@ -1952,3 +1952,107 @@ body::before {
     transform: translateY(3px);
   }
 }
+/* FULLSCREEN PHOTO */
+
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.95);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+}
+
+.image-viewer.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.image-viewer img {
+  max-width: 90%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.image-viewer-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+
+  background: none;
+  border: none;
+
+  color: #ffc31f;
+  font-size: 45px;
+
+  cursor: pointer;
+}
+
+.image-viewer-prev,
+.image-viewer-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+  border: 1px solid #ffc31f;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  color: #ffc31f;
+  font-size: 35px;
+
+  cursor: pointer;
+}
+
+.image-viewer-prev {
+  left: 20px;
+}
+
+.image-viewer-next {
+  right: 20px;
+}
+
+.slide img,
+.gallery-grid img {
+  cursor: zoom-in;
+}
+
+@media (max-width: 600px) {
+
+  .image-viewer img {
+    max-width: 94%;
+    max-height: 82vh;
+  }
+
+  .image-viewer-prev,
+  .image-viewer-next {
+    width: 42px;
+    height: 42px;
+    font-size: 28px;
+  }
+
+  .image-viewer-prev {
+    left: 8px;
+  }
+
+  .image-viewer-next {
+    right: 8px;
+  }
+}
