@@ -1947,3 +1947,8 @@ body::before {
     transform: none;
   }
 }
+@media (max-width: 600px) {
+  .hero-by {
+    transform: translateY(5px);
+  }
+}
