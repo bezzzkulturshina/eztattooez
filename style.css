@@ -1949,6 +1949,6 @@ body::before {
 }
 @media (max-width: 600px) {
   .hero-by {
-    transform: translateY(5px);
+    transform: translateY(4px);
   }
 }
