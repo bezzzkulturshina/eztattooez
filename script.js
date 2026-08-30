@@ -262,3 +262,126 @@ document.getElementById("sendIg").addEventListener("click", async () => {
 
   window.open(CONFIG.instagram, "_blank", "noopener");
 });
+/* FULLSCREEN PHOTO VIEWER */
+
+const imageViewer = document.getElementById("imageViewer");
+const imageViewerImg = document.getElementById("imageViewerImg");
+const imageViewerClose = document.getElementById("imageViewerClose");
+const imageViewerPrev = document.getElementById("imageViewerPrev");
+const imageViewerNext = document.getElementById("imageViewerNext");
+
+let viewerImages = [];
+let viewerIndex = 0;
+
+function getViewerImages() {
+  return [
+    ...document.querySelectorAll(".slide img"),
+    ...document.querySelectorAll(".gallery-grid img")
+  ];
+}
+
+function openViewer(img) {
+  viewerImages = getViewerImages();
+  viewerIndex = viewerImages.indexOf(img);
+
+  if (viewerIndex === -1) return;
+
+  imageViewerImg.src = img.src;
+
+  imageViewer.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeViewer() {
+  imageViewer.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+function nextImage() {
+  viewerIndex++;
+
+  if (viewerIndex >= viewerImages.length) {
+    viewerIndex = 0;
+  }
+
+  imageViewerImg.src = viewerImages[viewerIndex].src;
+}
+
+function prevImage() {
+  viewerIndex--;
+
+  if (viewerIndex < 0) {
+    viewerIndex = viewerImages.length - 1;
+  }
+
+  imageViewerImg.src = viewerImages[viewerIndex].src;
+}
+
+
+/* Нажатие на фото */
+
+document.addEventListener("click", function(e) {
+
+  const img = e.target.closest(".slide img, .gallery-grid img");
+
+  if (img) {
+    openViewer(img);
+  }
+
+});
+
+
+/* Закрыть */
+
+imageViewerClose.addEventListener("click", function(e) {
+  e.stopPropagation();
+  closeViewer();
+});
+
+
+/* Клик на чёрный фон */
+
+imageViewer.addEventListener("click", function(e) {
+
+  if (e.target === imageViewer) {
+    closeViewer();
+  }
+
+});
+
+
+/* Следующее фото */
+
+imageViewerNext.addEventListener("click", function(e) {
+  e.stopPropagation();
+  nextImage();
+});
+
+
+/* Предыдущее фото */
+
+imageViewerPrev.addEventListener("click", function(e) {
+  e.stopPropagation();
+  prevImage();
+});
+
+
+/* Клавиши на компьютере */
+
+document.addEventListener("keydown", function(e) {
+
+  if (!imageViewer.classList.contains("open")) return;
+
+  if (e.key === "Escape") {
+    closeViewer();
+  }
+
+  if (e.key === "ArrowRight") {
+    nextImage();
+  }
+
+  if (e.key === "ArrowLeft") {
+    prevImage();
+  }
+
+});
