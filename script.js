@@ -142,32 +142,13 @@ document.querySelectorAll(".modal").forEach((m) =>
    =========================================================== */
 
 const styles = [
-  {
-    name: "Realism",
-    image: "eztattoo2/IMG_9539.png"
-  },
-  {
-    name: "Portrait",
-    image: "portrait/IMG_0886.png"
-  },
-  {
-    name: "Chicano",
-    image: "chicano/chicano.jpg"
-  },
-  {
-    name: "Linework",
-    image: "linework/IMG_4643.png"
-  },
-  {
-    name: "Black and grey",
-    image: "Black and grey/IMG_4738.png"
-  },
-  {
-    name: "Concept tattoo",
-    image: "portrait3/IMG_1502.png"
-  }
+  { name: "Realism", image: "eztattoo2/IMG_9539.webp" },
+  { name: "Portrait", image: "portrait/IMG_0886.webp" },
+  { name: "Chicano", image: "chicano/chicano.webp" },
+  { name: "Linework", image: "linework/IMG_4643.webp" },
+  { name: "Black and grey", image: "Black and grey/IMG_4738.webp" },
+  { name: "Concept tattoo", image: "portrait3/IMG_1502.webp" }
 ];
-
 let styleIdx = 0;
 
 const styleImage = document.getElementById("styleImage");
