@@ -261,7 +261,7 @@ document.getElementById("sendIg").addEventListener("click", async () => {
   document.getElementById("waStatus").classList.remove("show");
 
   window.open(CONFIG.instagram, "_blank", "noopener");
-});
+
 ```js
 /* ===========================================================
    PHOTO LIGHTBOX
