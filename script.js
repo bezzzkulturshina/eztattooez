@@ -264,248 +264,211 @@ document.getElementById("sendIg").addEventListener("click", async () => {
 });
 ```js
 /* ===========================================================
-   FULLSCREEN PHOTO VIEWER
+   PHOTO LIGHTBOX
    =========================================================== */
 
-const imageViewer = document.getElementById("imageViewer");
-const imageViewerImg = document.getElementById("imageViewerImg");
-const imageViewerClose = document.getElementById("imageViewerClose");
-const imageViewerPrev = document.getElementById("imageViewerPrev");
-const imageViewerNext = document.getElementById("imageViewerNext");
+document.addEventListener("DOMContentLoaded", () => {
 
-let viewerImages = [];
-let viewerIndex = 0;
+  const viewer = document.getElementById("imageViewer");
+  const viewerImg = document.getElementById("imageViewerImg");
+  const closeBtn = document.getElementById("imageViewerClose");
+  const prevBtn = document.getElementById("imageViewerPrev");
+  const nextBtn = document.getElementById("imageViewerNext");
 
-
-/* ---------- Получаем фото текущего набора ---------- */
-
-function getViewerImages(source) {
-
-  if (source === "gallery") {
-    return Array.from(
-      document.querySelectorAll("#galleryModal .gallery-grid img")
-    );
+  if (!viewer || !viewerImg || !closeBtn || !prevBtn || !nextBtn) {
+    console.error("EZ Tattoo: Image viewer elements not found.");
+    return;
   }
 
-  return Array.from(
-    document.querySelectorAll("#works .carousel .slide img")
-  );
-}
+  let images = [];
+  let currentIndex = 0;
 
+  function openViewer(clickedImage, group) {
 
-/* ---------- Открыть фото ---------- */
+    images = Array.from(document.querySelectorAll(group));
 
-function openViewer(img, source = "carousel") {
+    currentIndex = images.indexOf(clickedImage);
 
-  viewerImages = getViewerImages(source);
+    if (currentIndex === -1) return;
 
-  viewerIndex = viewerImages.indexOf(img);
+    viewerImg.src = clickedImage.currentSrc || clickedImage.src;
+    viewerImg.alt = clickedImage.alt || "Tattoo by Olena Zadorozhna";
 
-  if (viewerIndex === -1) return;
+    viewer.classList.add("open");
+    document.body.style.overflow = "hidden";
 
-  imageViewerImg.src = img.src;
-  imageViewerImg.alt = img.alt || "Tattoo by Olena Zadorozhna";
-
-  imageViewer.classList.add("open");
-  document.body.style.overflow = "hidden";
-
-  updateViewerButtons();
-}
-
-
-/* ---------- Закрыть ---------- */
-
-function closeViewer() {
-
-  imageViewer.classList.remove("open");
-
-  document.body.style.overflow = "";
-}
-
-
-/* ---------- Следующее фото ---------- */
-
-function nextImage() {
-
-  if (viewerImages.length <= 1) return;
-
-  viewerIndex++;
-
-  if (viewerIndex >= viewerImages.length) {
-    viewerIndex = 0;
+    updateButtons();
   }
 
-  imageViewerImg.src = viewerImages[viewerIndex].src;
-  imageViewerImg.alt =
-    viewerImages[viewerIndex].alt || "Tattoo by Olena Zadorozhna";
-}
-
-
-/* ---------- Предыдущее фото ---------- */
-
-function prevImage() {
-
-  if (viewerImages.length <= 1) return;
-
-  viewerIndex--;
-
-  if (viewerIndex < 0) {
-    viewerIndex = viewerImages.length - 1;
+  function closeViewer() {
+    viewer.classList.remove("open");
+    document.body.style.overflow = "";
   }
 
-  imageViewerImg.src = viewerImages[viewerIndex].src;
-  imageViewerImg.alt =
-    viewerImages[viewerIndex].alt || "Tattoo by Olena Zadorozhna";
-}
+  function showImage(index) {
+
+    if (!images.length) return;
+
+    currentIndex = (index + images.length) % images.length;
+
+    const img = images[currentIndex];
+
+    viewerImg.src = img.currentSrc || img.src;
+    viewerImg.alt = img.alt || "Tattoo by Olena Zadorozhna";
+  }
+
+  function updateButtons() {
+
+    if (images.length <= 1) {
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+    } else {
+      prevBtn.style.display = "flex";
+      nextBtn.style.display = "flex";
+    }
+  }
+
+  /* -----------------------------------------
+     КАРУСЕЛЬ
+     ----------------------------------------- */
+
+  document.querySelectorAll("#works .slide img").forEach(img => {
+
+    img.style.cursor = "zoom-in";
+
+    img.addEventListener("click", function(e) {
+
+      e.stopPropagation();
+
+      openViewer(
+        this,
+        "#works .slide img"
+      );
+
+    });
+
+  });
 
 
-/* ---------- Показываем/скрываем стрелки ---------- */
+  /* -----------------------------------------
+     VIEW OTHER — ГАЛЕРЕЯ
+     ----------------------------------------- */
 
-function updateViewerButtons() {
+  document.querySelectorAll("#galleryModal .gallery-grid img").forEach(img => {
 
-  const hasMultiple = viewerImages.length > 1;
+    img.style.cursor = "zoom-in";
 
-  imageViewerPrev.style.display = hasMultiple ? "block" : "none";
-  imageViewerNext.style.display = hasMultiple ? "block" : "none";
-}
+    img.addEventListener("click", function(e) {
 
+      e.stopPropagation();
 
-/* ===========================================================
-   CLICK ON CAROUSEL PHOTO
-   =========================================================== */
+      openViewer(
+        this,
+        "#galleryModal .gallery-grid img"
+      );
 
-document.addEventListener("click", function (e) {
+    });
 
-  const img = e.target.closest("#works .carousel .slide img");
-
-  if (!img) return;
-
-  /*
-    Открываем фото только если оно действительно является
-    частью видимой карусели.
-  */
-
-  const slide = img.closest(".slide");
-
-  if (!slide) return;
-
-  const opacity = parseFloat(getComputedStyle(slide).opacity);
-
-  if (opacity === 0) return;
-
-  openViewer(img, "carousel");
-});
+  });
 
 
-/* ===========================================================
-   CLICK ON GALLERY PHOTO
-   =========================================================== */
+  /* -----------------------------------------
+     CLOSE
+     ----------------------------------------- */
 
-document.addEventListener("click", function (e) {
+  closeBtn.addEventListener("click", function(e) {
 
-  const img = e.target.closest("#galleryModal .gallery-grid img");
+    e.stopPropagation();
 
-  if (!img) return;
-
-  openViewer(img, "gallery");
-});
-
-
-/* ===========================================================
-   CLOSE
-   =========================================================== */
-
-imageViewerClose.addEventListener("click", function (e) {
-
-  e.stopPropagation();
-
-  closeViewer();
-});
-
-
-/* ---------- Клик по тёмному фону ---------- */
-
-imageViewer.addEventListener("click", function (e) {
-
-  if (e.target === imageViewer) {
     closeViewer();
-  }
+
+  });
+
+
+  viewer.addEventListener("click", function(e) {
+
+    if (e.target === viewer) {
+      closeViewer();
+    }
+
+  });
+
+
+  /* -----------------------------------------
+     PREVIOUS
+     ----------------------------------------- */
+
+  prevBtn.addEventListener("click", function(e) {
+
+    e.stopPropagation();
+
+    showImage(currentIndex - 1);
+
+  });
+
+
+  /* -----------------------------------------
+     NEXT
+     ----------------------------------------- */
+
+  nextBtn.addEventListener("click", function(e) {
+
+    e.stopPropagation();
+
+    showImage(currentIndex + 1);
+
+  });
+
+
+  /* -----------------------------------------
+     KEYBOARD
+     ----------------------------------------- */
+
+  document.addEventListener("keydown", function(e) {
+
+    if (!viewer.classList.contains("open")) return;
+
+    if (e.key === "Escape") {
+      closeViewer();
+    }
+
+    if (e.key === "ArrowLeft") {
+      showImage(currentIndex - 1);
+    }
+
+    if (e.key === "ArrowRight") {
+      showImage(currentIndex + 1);
+    }
+
+  });
+
+
+  /* -----------------------------------------
+     MOBILE SWIPE
+     ----------------------------------------- */
+
+  let touchStartX = 0;
+
+  viewer.addEventListener("touchstart", function(e) {
+
+    touchStartX = e.changedTouches[0].screenX;
+
+  }, { passive: true });
+
+
+  viewer.addEventListener("touchend", function(e) {
+
+    const touchEndX = e.changedTouches[0].screenX;
+    const difference = touchStartX - touchEndX;
+
+    if (Math.abs(difference) < 50) return;
+
+    if (difference > 0) {
+      showImage(currentIndex + 1);
+    } else {
+      showImage(currentIndex - 1);
+    }
+
+  }, { passive: true });
 
 });
-
-
-/* ===========================================================
-   NAVIGATION
-   =========================================================== */
-
-imageViewerNext.addEventListener("click", function (e) {
-
-  e.stopPropagation();
-
-  nextImage();
-
-});
-
-
-imageViewerPrev.addEventListener("click", function (e) {
-
-  e.stopPropagation();
-
-  prevImage();
-
-});
-
-
-/* ===========================================================
-   KEYBOARD
-   =========================================================== */
-
-document.addEventListener("keydown", function (e) {
-
-  if (!imageViewer.classList.contains("open")) return;
-
-  if (e.key === "Escape") {
-    closeViewer();
-  }
-
-  if (e.key === "ArrowRight") {
-    nextImage();
-  }
-
-  if (e.key === "ArrowLeft") {
-    prevImage();
-  }
-
-});
-
-
-/* ===========================================================
-   MOBILE SWIPE
-   =========================================================== */
-
-let touchStartX = 0;
-let touchEndX = 0;
-
-imageViewer.addEventListener("touchstart", function (e) {
-
-  touchStartX = e.changedTouches[0].screenX;
-
-}, { passive: true });
-
-
-imageViewer.addEventListener("touchend", function (e) {
-
-  touchEndX = e.changedTouches[0].screenX;
-
-  const difference = touchStartX - touchEndX;
-
-  if (Math.abs(difference) < 50) return;
-
-  if (difference > 0) {
-    nextImage();
-  } else {
-    prevImage();
-  }
-
-}, { passive: true });
-```
