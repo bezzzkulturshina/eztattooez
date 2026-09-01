@@ -332,13 +332,22 @@ A place where your idea takes shape and becomes something truly unique.
       </div>
     </div>
 
-    <script src="./script.js"></script>
-    <div class="image-viewer" id="imageViewer">
-  <button class="image-viewer-close" id="imageViewerClose">×</button>
-  <button class="image-viewer-prev" id="imageViewerPrev">‹</button>
-  <img id="imageViewerImg" src="" alt="Tattoo">
-  <button class="image-viewer-next" id="imageViewerNext">›</button>
+    ```html
+<div class="image-viewer" id="imageViewer">
+  <button class="image-viewer-close" id="imageViewerClose" aria-label="Close">×</button>
+
+  <button class="image-viewer-prev" id="imageViewerPrev" aria-label="Previous photo">
+    ‹
+  </button>
+
+  <img id="imageViewerImg" src="" alt="Tattoo by Olena Zadorozhna">
+
+  <button class="image-viewer-next" id="imageViewerNext" aria-label="Next photo">
+    ›
+  </button>
 </div>
+
+<script src="./script.js"></script>
 
 </body>
 </html>
